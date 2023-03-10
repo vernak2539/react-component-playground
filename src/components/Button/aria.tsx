@@ -5,7 +5,7 @@ import "./styles.css";
 // click handler is onPress and is defined in the AriaButtonProps
 // different semantics for it (i.e. SyntheticBaseEvent = onclick,
 
-interface ButtonProps extends AriaButtonProps {
+interface ButtonProps extends AriaButtonProps<"button"> {
   /**
    * Is this the principal call to action on the page?
    */
