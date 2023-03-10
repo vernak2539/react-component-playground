@@ -5,7 +5,7 @@ import { StandardButton } from "./standard";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "Example/Button",
+  title: "Example/StandardButton",
   component: StandardButton,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {

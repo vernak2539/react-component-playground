@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useRef } from "react";
+import { AriaButtonProps, useButton } from "react-aria";
 import "./styles.css";
 
-interface AriaButtonProps {
+// click handler is onPress and is defined in the AriaButtonProps
+// different semantics for it (i.e. SyntheticBaseEvent = onclick,
+
+interface ButtonProps extends AriaButtonProps {
   /**
    * Is this the principal call to action on the page?
    */
@@ -18,33 +22,33 @@ interface AriaButtonProps {
    * Button contents
    */
   label: string;
-  /**
-   * Optional click handler
-   */
-  onClick?: () => void;
 }
 
 /**
  * Primary UI component for user interaction
  */
-export const AriaButton = ({
-  primary = false,
-  size = "medium",
-  backgroundColor,
-  label,
-  ...props
-}: AriaButtonProps) => {
+export const AriaButton = (props: ButtonProps) => {
+  const ref = useRef();
+  const defaultedProps = {
+    primary: false,
+    size: "medium",
+    ...props,
+  };
+  const { buttonProps } = useButton(defaultedProps, ref);
+  const { label, primary, size, backgroundColor } = defaultedProps;
+
   const mode = primary
     ? "storybook-button--primary"
     : "storybook-button--secondary";
+
   return (
     <button
-      type="button"
+      ref={ref}
       className={["storybook-button", `storybook-button--${size}`, mode].join(
         " "
       )}
       style={{ backgroundColor }}
-      {...props}
+      {...buttonProps}
     >
       {label}
     </button>
