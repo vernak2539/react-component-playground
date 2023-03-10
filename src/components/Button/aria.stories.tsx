@@ -14,9 +14,13 @@ export default {
   },
 } as ComponentMeta<typeof AriaButton>;
 
+const onPress = (e: PressEvent) => {
+  console.log(e);
+};
+
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof AriaButton> = (args) => (
-  <AriaButton {...args} />
+  <AriaButton onPress={onPress} {...args} />
 );
 
 export const Primary = Template.bind({});

@@ -37,6 +37,8 @@ export const AriaButton = (props: ButtonProps) => {
   const { buttonProps } = useButton(defaultedProps, ref);
   const { label, primary, size, backgroundColor } = defaultedProps;
 
+  console.log(buttonProps);
+
   const mode = primary
     ? "storybook-button--primary"
     : "storybook-button--secondary";
